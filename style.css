@@ -1,17 +1,22 @@
 :root {
-  --primary: #eb1e1e; /* azul padrão base */
+  --primary: #eb1e1e; /* vermelho primário */
   --bg: #f8fafc;
   --text: #0f172a;
   --card: #ffffff;
   --border: #e5e7eb;
 }
 
-* { box-sizing: border-box; }
+* { 
+  box-sizing: border-box; 
+}
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
   background: var(--bg);
   color: var(--text);
+  /* Transição suave ao alternar as cores do tema via JS */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header {
@@ -31,7 +36,9 @@ main {
   border-radius: 16px;
   padding: 24px;
   width: 320px;
-  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  /* Transição suave nas bordas e no fundo do card */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .counter {
@@ -42,16 +49,35 @@ main {
   margin: 16px 0;
 }
 
-.counter button, .theme button {
+.counter button, 
+.theme button {
   padding: 8px 14px;
   border-radius: 10px;
   border: 1px solid var(--primary);
   background: var(--primary);
   color: white;
   cursor: pointer;
+  transition: transform 0.1s ease, opacity 0.2s ease;
+}
+
+.counter button:hover,
+.theme button:hover {
+  opacity: 0.9;
+}
+
+.counter button:active,
+.theme button:active {
+  transform: scale(0.96);
 }
 
 .theme button {
   background: transparent;
   color: var(--text);
+}
+
+footer {
+  text-align: center;
+  padding: 16px;
+  color: var(--text);
+  opacity: 0.8;
 }

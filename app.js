@@ -1,4 +1,4 @@
-// Versão base 0.1.0
+// Versão 1.0.0 (Hotfix)
 const elCount = document.getElementById("count");
 const elIncrement = document.getElementById("btn-increment");
 const elDecrement = document.getElementById("btn-decrement");
@@ -6,39 +6,45 @@ const elToggleTheme = document.getElementById("btn-toggle-theme");
 const elTitle = document.getElementById("title");
 
 function updateCount(newValue) {
-  elCount.textContent = String(newValue);
+  if (elCount) {
+    elCount.textContent = String(newValue);
+  }
 }
 
 let state = { count: 0, dark: false };
 
-elIncrement.addEventListener("click", () => {
-  state.count += 2;
-  updateCount(state.count);
-});
+// Incrementa de 2 em 2
+if (elIncrement) {
+  elIncrement.addEventListener("click", () => {
+    state.count += 2;
+    updateCount(state.count);
+  });
+}
 
-elDecrement.addEventListener("click", () => {
-  state.count -= 2;
-  updateCount(state.count);
-});
+// Decrementa de 2 em 2
+if (elDecrement) {
+  elDecrement.addEventListener("click", () => {
+    state.count -= 2;
+    updateCount(state.count);
+  });
+}
 
-elToggleTheme.addEventListener("click", () => {
-  state.dark = !state.dark;
+// Alterna tema e corrige o título
+if (elToggleTheme) {
+  elToggleTheme.addEventListener("click", () => {
+    state.dark = !state.dark;
 
-  // 1. Cores principais da página
-  document.documentElement.style.setProperty("--bg", state.dark ? "#0b1220" : "#f8fafc");
-  document.documentElement.style.setProperty("--text", state.dark ? "#e2e8f0" : "#0f172a");
-  
-  // 2. Cores de componentes adicionais (ex: cards, botões, bordas)
-  document.documentElement.style.setProperty("--card-bg", state.dark ? "#1e293b" : "#ffffff");
-  document.documentElement.style.setProperty("--border-color", state.dark ? "#334155" : "#cbd5e1");
+    // 1. Alterna variáveis CSS
+    document.documentElement.style.setProperty("--bg", state.dark ? "#0b1220" : "#f8fafc");
+    document.documentElement.style.setProperty("--text", state.dark ? "#e2e8f0" : "#0f172a");
+    document.documentElement.style.setProperty("--card", state.dark ? "#1e293b" : "#ffffff");
+    document.documentElement.style.setProperty("--border", state.dark ? "#334155" : "#e5e7eb");
 
-  // 3. Modificações diretas em elementos específicos (se necessário)
-  // Exemplo: alterando múltiplos elementos da UI
-  elTitle.textContent = state.dark ? "Mini App – Modo Escuro" : "Mini App – GitFlow";
-  elToggleTheme.setAttribute("aria-pressed", String(state.dark));
-  
-  // Se houver mais elementos que mudam de classe ou estilo direto:
-  // document.querySelectorAll('.card').forEach(card => {
-  //   card.style.backgroundColor = state.dark ? "#1e293b" : "#ffffff";
-  // });
-});
+    // 2. Garante o título correto dependendo do estado
+    if (elTitle) {
+      elTitle.textContent = state.dark ? "Mini App – Modo Escuro" : "Mini App – GitFlow";
+    }
+
+    elToggleTheme.setAttribute("aria-pressed", String(state.dark));
+  });
+}

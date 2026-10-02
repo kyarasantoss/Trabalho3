@@ -3,24 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mini App – GitFlow - Equipe B</title>
-  <title>Mini App – GitFlow - Modo Escuro</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Mini App – GitFlow</title>
+  <!-- Conectado ao seu arquivo de estilos -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1 id="title">Mini App – GitFlow - Equipe B</h1>
-    <h1 id="title">Mini App – GitFlow - Modo Escuro</h1>
+    <!-- Título unificado sem duplicidades (resolução do bug visual) -->
+    <h1 id="title">Mini App – GitFlow</h1>
   </header>
 
   <main>
     <section class="card">
       <p id="message">Bem-vindos! Vamos praticar GitFlow.</p>
+
       <div class="counter">
         <button id="btn-decrement" aria-label="Decrementar">–</button>
         <span id="count" aria-live="polite">0</span>
         <button id="btn-increment" aria-label="Incrementar">+</button>
       </div>
+
       <div class="theme">
         <button id="btn-toggle-theme" aria-pressed="false">Alternar tema</button>
       </div>
@@ -28,9 +30,11 @@
   </main>
 
   <footer>
-    <small>Equipe kmt • Versão 1.0.0 <span id="version">1.0.0</span></small>
+    <!-- Versão limpa 1.0.0 sem repetição -->
+    <small>Equipe kmt • Versão 1.0.0</small>
   </footer>
 
+  <!-- Conectado ao seu app.js -->
   <script src="app.js"></script>
 </body>
 </html>
